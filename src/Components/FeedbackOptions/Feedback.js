@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styles from "./Feedback.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './Feedback.module.css';
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <>
-      {options.map((key) => {
+      {options.map(key => {
         return (
           <button
             className={styles.btn}

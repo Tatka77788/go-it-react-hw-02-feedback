@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Statistics from "./Components/Statistic/Statistics";
-import FeedbackOptions from "./Components/FeedbackOptions/Feedback";
-import Section from "./Components/Section/Section";
-import Notification from "./Components/Notification/Notification";
+import React, { Component } from 'react';
+import Statistics from './Components/Statistic/Statistics';
+import FeedbackOptions from './Components/FeedbackOptions/Feedback';
+import Section from './Components/Section/Section';
+import Notification from './Components/Notification/Notification';
 
 class App extends Component {
   state = {
@@ -12,7 +12,7 @@ class App extends Component {
   };
 
   handleIncrement = ({ target }) => {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return {
         [target.name]: prevState[target.name] + 1,
       };
@@ -23,10 +23,14 @@ class App extends Component {
     return this.state.good + this.state.neutral + this.state.bad;
   };
 
-  countPositiveFeedbackPercentage = (total) =>
+  countPositiveFeedbackPercentage = total =>
     Math.round((this.state.good / total) * 100);
 
   render() {
+    const totalFeedback = this.countTotalFeedback();
+    const positiveFeedback = this.countPositiveFeedbackPercentage(
+      this.countTotalFeedback(),
+    );
     const { good, neutral, bad } = this.state;
 
     return (
@@ -37,16 +41,14 @@ class App extends Component {
             onLeaveFeedback={this.handleIncrement}
           />
         </Section>
-        {good + neutral + bad > 0 ? (
+        {totalFeedback > 0 ? (
           <Section title="Statistics">
             <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage(
-                this.countTotalFeedback()
-              )}
+              total={totalFeedback}
+              positivePercentage={positiveFeedback}
             />
           </Section>
         ) : (
