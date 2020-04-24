@@ -9,7 +9,7 @@ const Statistic = ({ label, value }) => (
 
 Statistic.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.any,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Statistic;
