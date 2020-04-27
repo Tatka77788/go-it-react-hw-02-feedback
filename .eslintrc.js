@@ -20,8 +20,8 @@ module.exports = {
       "jsx-quotes": [
         1,
         "prefer-double"
-    ]
-
+    ],
+    "eslint-disable react/jsx-filename-extension"
     }
   };
   
