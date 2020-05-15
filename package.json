@@ -20,7 +20,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "prettier": "prettier --write src/**/*.js",
-    "lint": "tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.spec.ts'" 
+    "lint:format": "prettier src/**/**/*.js --write",
+    "lint:fix": "eslint src/**/**/*.js --fix",
+    "lint": "eslint src/**/**/*.js" 
   },
   "eslintConfig": {
     "extends": "react-app"
